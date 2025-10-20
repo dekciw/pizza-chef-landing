@@ -1,290 +1,410 @@
+/* ========= Сбрасываем отступы и выравниваем оформление ========= */
 * {
-    margin: 0;
-    padding: 0;
+	margin: 0;
+	padding: 0;
 }
 
+/* ========= Подключаем гарнитуру MullerBold ========= */
 @font-face {
-    font-family: MullerBold;
-    src: url("../assets/fonts/MullerBold.otf");
+	font-family: MullerBold;
+	src: url('../assets/fonts/MullerBold.otf');
 }
 
+/* ========= Подключаем гарнитуру MullerExtraBold ========= */
 @font-face {
-    font-family: MullerExtraBold;
-    src: url("../assets/fonts/MullerExtraBold.otf");
+	font-family: MullerExtraBold;
+	src: url('../assets/fonts/MullerExtraBold.otf');
 }
 
+/* ========= Подключаем гарнитуру MullerRegular ========= */
 @font-face {
-    font-family: MullerRegular;
-    src: url("../assets/fonts/MullerRegular.otf");
+	font-family: MullerRegular;
+	src: url('../assets/fonts/MullerRegular.otf');
 }
 
+/* ========= Базовая типографика страницы ========= */
 body {
-    font-family: MullerRegular, sans-serif;
+	font-family: MullerRegular, sans-serif;
 }
 
-.header {
-    background-color: rgb(255, 255, 255);
-    box-shadow: 0 3px 13.8px 1.2px rgba(152, 152, 152, 0.2);
-    padding: 16px 0 15px 0;
-    margin-bottom: 66px;
-}
-
+/* ========= Ограничиваем ширину и центрируем контент ========= */
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
+	max-width: 1200px;
+	margin: 0 auto;
 }
 
-.header .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+/* ========= Стиль шапки сайта ========= */
+.site-header {
+	background-color: rgb(255, 255, 255);
+	box-shadow: 0 3px 13.8px 1.2px rgba(152, 152, 152, 0.2);
+	padding: 16px 0 15px 0;
+	margin-bottom: 66px;
 }
 
-.menu {
-
+/* ========= Раскладываем элементы шапки по горизонтали ========= */
+.site-header__container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 
-.menu ul {
-    display: flex;
-    list-style: none;
-    width: 489px;
-    justify-content: space-between;
+/* ========= Настройки кнопки-бургера в шапке ========= */
+.site-header__burger {
+	display: none;
+	background: transparent;
+	border: none;
+	padding: 0;
+	cursor: pointer;
 }
 
-.menu-item a {
-    text-decoration: none;
-    font-size: 16px;
-    color: rgb(164, 107, 0);
-    line-height: 1;
+/* ========= Иконка бургер-меню ========= */
+.site-header__burger-icon {
+	width: 36px;
+	height: 36px;
+	fill: #f9d7a8;
 }
 
-main {
-    margin: 132px 0 81px 0;
-
+/* ========= Навигационный блок в шапке ========= */
+.site-header__navigation {
+	display: flex;
+	align-items: center;
 }
 
-.main .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+/* ========= Кнопка закрытия меню ========= */
+.site-header__close {
+	display: none;
+	background: transparent;
+	border: none;
+	padding: 0;
+	cursor: pointer;
 }
 
-.main-info {
-    max-width: 622px;
-    margin-top: 66px;
-    margin-bottom: 80px;
+/* ========= Настраиваем иконку закрытия меню ========= */
+.site-header__close svg {
+	width: 24px;
+	height: 24px;
+	fill: rgb(164, 107, 0);
 }
 
-.main-info h1 {
-    font-family: MullerExtraBold, sans-serif;
-    font-size: 45px;
-    line-height: 1.222;
-    font-weight: bold;
+/* ========= Список пунктов меню ========= */
+.site-header__menu-list {
+	display: flex;
+	list-style: none;
+	width: 489px;
+	justify-content: space-between;
 }
 
-.double-title {
-    color: rgb(185, 145, 80);
+/* ========= Отдельный пункт меню ========= */
+.site-header__menu-item {
+	display: flex;
 }
 
-.double-title span {
-    color: #ffaf18;
+/* ========= Ссылка в пункте меню ========= */
+.site-header__menu-link {
+	text-decoration: none;
+	font-size: 16px;
+	color: rgb(164, 107, 0);
+	line-height: 1;
 }
 
-.main-advantages {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-top: 13px;
+/* ========= Контейнер иконки корзины ========= */
+.site-header__cart {
+	display: flex;
+	align-items: center;
 }
 
-.advantage {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 306px;
-    margin-top: 47px;
+/* ========= Внешние отступы героя ========= */
+.hero {
+	margin: 132px 0 81px 0;
 }
 
-.advantage-text {
-    margin-left: 16px;
+/* ========= Сетка контента героя ========= */
+.hero__container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 
-.advantage-title {
-    font-family: MullerExtraBold, sans-serif;
-    font-size: 16px;
-    color: rgb(255, 175, 24);
-    text-transform: uppercase;
-    margin-bottom: 10px;
+/* ========= Текстовый блок героя ========= */
+.hero__content {
+	max-width: 622px;
+	margin-top: 66px;
+	margin-bottom: 80px;
 }
 
-.advantage-description {
-    font-size: 16px;
-    color: rgb(185, 145, 80);
+/* ========= Основной заголовок героя ========= */
+.hero__title {
+	font-family: MullerExtraBold, sans-serif;
+	font-size: 45px;
+	line-height: 1.222;
+	font-weight: bold;
+	color: rgb(185, 145, 80);
 }
 
-.main-action {
-    margin-top: 60px;
+/* ========= Универсальный стиль для выделенных заголовков ========= */
+.accent-title {
+	color: rgb(185, 145, 80);
 }
 
-.btn {
-    background-color: rgb(255, 175, 24);
-    width: 224px;
-    height: 60px;
-    cursor: pointer;
-    outline: none;
-    border: none;
-    padding: 22px;
-    box-sizing: border-box;
-
-    font-size: 16px;
-    font-family: MullerBold, sans-serif;
-    color: rgb(56, 36, 0);
+/* ========= Подсветка части заголовка ========= */
+.accent-title__highlight {
+	color: #ffaf18;
 }
 
+/* ========= Блок преимуществ героя ========= */
+.hero__advantages {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin-top: 13px;
+}
+
+/* ========= Отдельное преимущество ========= */
+.hero__advantage {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	max-width: 306px;
+	margin-top: 47px;
+}
+
+/* ========= Обертка картинки преимущества ========= */
+.hero__advantage-image {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* ========= Текстовая часть преимущества ========= */
+.hero__advantage-body {
+	margin-left: 16px;
+}
+
+/* ========= Заголовок преимущества ========= */
+.hero__advantage-title {
+	font-family: MullerExtraBold, sans-serif;
+	font-size: 16px;
+	color: rgb(255, 175, 24);
+	text-transform: uppercase;
+	margin-bottom: 10px;
+}
+
+/* ========= Подробности преимущества ========= */
+.hero__advantage-description {
+	font-size: 16px;
+	color: rgb(185, 145, 80);
+}
+
+/* ========= Зона с кнопкой в герое ========= */
+.hero__action {
+	margin-top: 60px;
+}
+
+/* ========= Общий стиль кнопок ========= */
+.button {
+	background-color: rgb(255, 175, 24);
+	cursor: pointer;
+	outline: none;
+	border: none;
+	padding: 22px;
+	box-sizing: border-box;
+	font-size: 16px;
+	font-family: MullerBold, sans-serif;
+	color: rgb(56, 36, 0);
+	transition: opacity 0.2s ease;
+}
+
+/* ========= Состояние наведения кнопок ========= */
+.button:hover {
+	opacity: 0.9;
+}
+
+/* ========= Размеры кнопки в герое ========= */
+.hero__button {
+	width: 224px;
+	height: 60px;
+}
+
+/* ========= Блок с иллюстрацией героя ========= */
+.hero__image {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* ========= Отступы секции продуктов ========= */
 .products {
-    padding: 80px 0 120px 0;
+	padding: 80px 0 120px 0;
 }
 
-.products-title {
-    font-size: 35px;
-    font-family: MullerBold, sans-serif;
-    color: rgb(189, 152, 92);
-    text-align: center;
+/* ========= Контейнер секции продуктов ========= */
+.products__container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
-.products-items {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin-top: 35px;
+/* ========= Заголовок секции продуктов ========= */
+.products__title {
+	font-size: 35px;
+	font-family: MullerBold, sans-serif;
+	color: rgb(189, 152, 92);
+	text-align: center;
 }
 
-.product {
-    width: 282px;
-    text-align: center;
-    padding: 15px 20px;
-    margin-top: 24px;
-    box-sizing: border-box;
-    background-color: rgb(255, 255, 255);
-    box-shadow: 0 3px 13.8px 1.2px rgba(152, 152, 152, 0.2);
+/* ========= Список карточек продуктов ========= */
+.products__list {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	margin-top: 35px;
 }
 
-.product-image {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 180px;
+/* ========= Карточка отдельного продукта ========= */
+.products__item {
+	width: 282px;
+	text-align: center;
+	padding: 15px 20px;
+	margin-top: 24px;
+	box-sizing: border-box;
+	background-color: rgb(255, 255, 255);
+	box-shadow: 0 3px 13.8px 1.2px rgba(152, 152, 152, 0.2);
 }
 
-.product-title {
-    font-size: 18px;
-    font-family: MullerBold, sans-serif;
-    color: rgb(56, 36, 0);
+/* ========= Обертка изображения продукта ========= */
+.products__image {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 180px;
 }
 
-.product-text {
-    font-size: 14px;
-    color: rgb(24, 26, 26);
-    line-height: 1.286;
-    height: 49px;
-    margin: 14px 0 15px 0;
+/* ========= Название продукта ========= */
+.products__name {
+	font-size: 18px;
+	font-family: MullerBold, sans-serif;
+	color: rgb(56, 36, 0);
 }
 
-.product-action.btn {
-    padding: 17px;
-    width: 242px;
-    height: 50px;
+/* ========= Описание продукта ========= */
+.products__description {
+	font-size: 14px;
+	color: rgb(24, 26, 26);
+	line-height: 1.286;
+	height: 49px;
+	margin: 14px 0 15px 0;
 }
 
+/* ========= Область с кнопкой для продукта ========= */
+.products__action {
+	display: flex;
+	justify-content: center;
+}
+
+/* ========= Размеры кнопки добавления в корзину ========= */
+.products__add-button {
+	width: 242px;
+	height: 50px;
+	padding: 17px;
+}
+
+/* ========= Секция оформления заказа ========= */
 .order {
-    padding: 120px 0 115px 0;
-    overflow: hidden;
+	padding: 120px 0 115px 0;
+	overflow: hidden;
 }
 
-.order .container {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
+/* ========= Контейнер секции заказа ========= */
+.order__container {
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
 }
 
-.order-text {
-    max-width: 384px;
+/* ========= Левый текстовый блок заказа ========= */
+.order__text {
+	max-width: 384px;
 }
 
-.order-text-title {
-    font-size: 35px;
-    font-family: MullerExtraBold, sans-serif;
-    font-weight: bold;
-    margin-bottom: 65px;
+/* ========= Заголовок блока заказа ========= */
+.order__title {
+	font-size: 35px;
+	font-family: MullerExtraBold, sans-serif;
+	font-weight: bold;
+	margin-bottom: 65px;
+	display: inline-block;
 }
 
-.order-text-message {
-    font-size: 16px;
-    color: rgb(185, 145, 80);
-    line-height: 1.5;
+/* ========= Сообщение с условиями доставки ========= */
+.order__message {
+	font-size: 16px;
+	color: rgb(185, 145, 80);
+	line-height: 1.5;
 }
 
-.order-form {
-    margin-left: 122px;
-    max-width: 330px;
+/* ========= Форма заказа ========= */
+.order__form {
+	display: flex;
+	flex-direction: column;
+	margin-left: 122px;
+	max-width: 330px;
 }
 
-.order-input {
-    border: 1px solid rgb(185, 145, 80);
-    background-color: rgb(255, 255, 255);
-    width: 330px;
-    height: 60px;
-    padding: 23px 22px 24px 22px;
-    margin-bottom: 24px;
-    box-sizing: border-box;
-    outline: none;
-
-    font-size: 18px;
-    color: rgb(177, 128, 34);
+/* ========= Поля ввода в форме ========= */
+.order__field {
+	border: 1px solid rgb(185, 145, 80);
+	background-color: rgb(255, 255, 255);
+	width: 330px;
+	height: 60px;
+	padding: 23px 22px 24px 22px;
+	margin-bottom: 24px;
+	box-sizing: border-box;
+	outline: none;
+	font-size: 18px;
+	color: rgb(177, 128, 34);
 }
 
-.order-input::placeholder {
-    color: rgb(203, 168, 110);
+/* ========= Цвет placeholder в полях ввода ========= */
+.order__field::placeholder {
+	color: rgb(203, 168, 110);
 }
 
-.order .btn {
-    width: 330px;
-    height: 60px;
+/* ========= Кнопка отправки формы ========= */
+.order__button {
+	width: 330px;
+	height: 60px;
 }
 
-.order-image {
-    position: relative;
-    width: 282px;
-    margin-left: 78px;
+/* ========= Область с иллюстрацией заказа ========= */
+.order__image-wrapper {
+	position: relative;
+	width: 282px;
+	margin-left: 78px;
 }
 
-.order-image img {
-    position: absolute;
-    bottom: -35px;
-    left: 0;
+/* ========= Изображение в блоке заказа ========= */
+.order__image {
+	position: absolute;
+	bottom: -35px;
+	left: 0;
 }
 
-.footer {
-    background-color: rgb(255, 255, 255);
-    box-shadow: 0 0 13.8px 1.2px rgba(152, 152, 152, 0.2);
-    padding: 16px 0 15px 0;
+/* ========= Оформление подвала ========= */
+.site-footer {
+	background-color: rgb(255, 255, 255);
+	box-shadow: 0 0 13.8px 1.2px rgba(152, 152, 152, 0.2);
+	padding: 16px 0 15px 0;
 }
 
-.footer .container {
-    display: flex;
-    align-items: center;
+/* ========= Сетка подвала ========= */
+.site-footer__container {
+	display: flex;
+	align-items: center;
 }
 
-.rights {
-    font-size: 12px;
-    color: rgb(186, 179, 179);
-    margin-left: 358px;
-}
-
-.burger {
-    display: none;
-}
-
-.close {
-    display: none;
+/* ========= Текстовые права в подвале ========= */
+.site-footer__rights {
+	font-size: 12px;
+	color: rgb(186, 179, 179);
+	margin-left: 358px;
 }

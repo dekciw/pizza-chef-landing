@@ -1,86 +1,101 @@
-// Нашли нужный нам элемент от которого будем делать плавную прокрутку.
-document.getElementById('choose-pizza').onclick = function () {
-    // Сделали плавную прокрутку
-    document.getElementsByClassName('products')[0].scrollIntoView({behavior: 'smooth'})
+// ========= Инициализация плавного перехода к каталогу =========
+const choosePizzaButton = document.getElementById('choose-pizza');
+const productsSection = document.querySelector('.products');
+
+if (choosePizzaButton && productsSection) {
+	choosePizzaButton.addEventListener('click', () => {
+		productsSection.scrollIntoView({ behavior: 'smooth' });
+	});
 }
 
-//Нашли class у кнопок
-let addToCardButtons = document.getElementsByClassName('btn-add-to-cart');
-// Нашли название каждой пиццы
-let productInput = document.getElementById('product-input');
-//Нашли input ввода номера телефона
-let phoneInput = document.getElementById('phone-input');
+// ========= Подготовка элементов формы заказа =========
+const productInput = document.getElementById('product-input');
+const addressInput = document.getElementById('address-input');
+const phoneInput = document.getElementById('phone-input');
+const orderSection = document.querySelector('.order');
+const orderForm = document.getElementById('order-form');
+const orderButton = document.getElementById('create-order');
 
-// Создали цикл для отслеживания каждой кнопки
-for (let i = 0; i < addToCardButtons.length; i++) {
-    addToCardButtons[i].onclick = function (e) {
-        // Нашли название пиццы и input подставив туда нужный элемент
-        productInput.value = e.target.parentElement.previousElementSibling.previousElementSibling.innerText;
-        // Повторили плавную прокрутку
-        document.getElementsByClassName('order')[0].scrollIntoView({behavior: 'smooth'})
-    }
-}
+// ========= Автозаполнение выбранной пиццы и прокрутка к форме =========
+const addToCartButtons = document.querySelectorAll('.products__add-button');
 
-//Валидация формы
-document.getElementById('create-order').onclick = function () {
-    // Нашли input для адреса и телефона
-    let addressInput = document.getElementById('address-input');
+addToCartButtons.forEach(button => {
+	button.addEventListener('click', event => {
+		const productCard = event.target.closest('.products__item');
+		if (!productCard || !productInput) {
+			return;
+		}
 
-    // Создали условие - если пицца не выбрана то выходит alert
-    if (!productInput.value) {
-        alert('Выберите пиццу');
-        return;
-    }
-    // Создали еще условие - если адрес не введен то выходит alert
-    if (!addressInput.value) {
-        alert('Заполните адрес');
-        return;
-    }
-    // Создали еще условие - если телефон не введен то выходит alert
-    if (!phoneInput.value) {
-        alert('Заполните номер телефона');
-        return;
-    }
-    // Выводим alert если заказ успешно оформлен
-    alert('Спасибо за заказ.');
-}
+		const productName = productCard.querySelector('.products__name');
+		if (productName) {
+			productInput.value = productName.textContent.trim();
+		}
 
-//Разрешаем в inputPhone ввод только цифр
-phoneInput.onkeydown = (e) => {
-    let number = parseInt(e.key);
-    // Проверяем, является ли введенный символ числом или клавишей Backspace
-    if (isNaN(number) && e.key !== 'Backspace') {
-        // Предотвращаем действие по умолчанию только для неподходящих символов, а не для Backspace
-        e.preventDefault();
-    }
-
-    // Делаем маску для номера телефона в формате +7(927)93-81-000
-    phoneInput.oninput = (e) => {
-        let inputValue = e.target.value.replace(/\D/g, ''); // Удаляем все нецифровые символы
-        let formattedValue = '';
-
-        if (inputValue.length >= 1) {
-            formattedValue += '+' + inputValue.charAt(0);
-        }
-        if (inputValue.length >= 2) {
-            formattedValue += '(' + inputValue.slice(1, 4);
-        }
-        if (inputValue.length >= 5) {
-            formattedValue += ')' + inputValue.slice(4, 7);
-        }
-        if (inputValue.length >= 7) {
-            formattedValue += '-' + inputValue.slice(7, 9);
-        }
-        if (inputValue.length >= 9) {
-            formattedValue += '-' + inputValue.slice(9, 12);
-        }
-
-        e.target.value = formattedValue;
-    }
-}
-
-// Очищаем поля формы
-const clearInput = document.getElementsByClassName('btn-order')[0];
-clearInput.addEventListener('click', function () {
-    document.getElementById('order-form').reset();
+		if (orderSection) {
+			orderSection.scrollIntoView({ behavior: 'smooth' });
+		}
+	});
 });
+
+// ========= Проверяем форму перед оформлением заказа =========
+if (orderButton) {
+	orderButton.addEventListener('click', () => {
+		if (!productInput || !addressInput || !phoneInput || !orderForm) {
+			return;
+		}
+
+		if (!productInput.value) {
+			alert('Выберите пиццу');
+			return;
+		}
+
+		if (!addressInput.value) {
+			alert('Заполните адрес');
+			return;
+		}
+
+		if (!phoneInput.value) {
+			alert('Заполните номер телефона');
+			return;
+		}
+
+		alert('Спасибо за заказ.');
+		orderForm.reset();
+	});
+}
+
+// ========= Ограничиваем ввод телефона только цифрами =========
+if (phoneInput) {
+	phoneInput.addEventListener('keydown', event => {
+		const isDigit = /\d/.test(event.key);
+		const isControlKey = ['Backspace', 'ArrowLeft', 'ArrowRight', 'Tab'].includes(event.key);
+
+		if (!isDigit && !isControlKey) {
+			event.preventDefault();
+		}
+	});
+
+	// ========= Формируем маску номера телефона =========
+	phoneInput.addEventListener('input', event => {
+		const numericValue = event.target.value.replace(/\D/g, '');
+		let formattedValue = '';
+
+		if (numericValue.length >= 1) {
+			formattedValue += '+' + numericValue.charAt(0);
+		}
+		if (numericValue.length >= 2) {
+			formattedValue += '(' + numericValue.slice(1, 4);
+		}
+		if (numericValue.length >= 5) {
+			formattedValue += ')' + numericValue.slice(4, 7);
+		}
+		if (numericValue.length >= 7) {
+			formattedValue += '-' + numericValue.slice(7, 9);
+		}
+		if (numericValue.length >= 9) {
+			formattedValue += '-' + numericValue.slice(9, 12);
+		}
+
+		event.target.value = formattedValue;
+	});
+}
