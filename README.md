@@ -14,16 +14,17 @@
 
 ## Структура
 ```
-assets/
-  fonts/
-  images/
-css/
-  style.css
-  adaptive.css
-scripts/
-  script.js
-  script-adaptive.js
-index.html
+img/            # Изображения и иконки (PNG)
+fonts/          # Шрифты
+index.html      # Главная страница
+style.css       # Стили проекта (адаптив внутри)
+script.js       # Скрипты (скролл, меню, форма)
+
+# опционально (при необходимости в будущем):
+.github/        # CI и служебные файлы
+.editorconfig   # Правила форматирования
+.gitignore      # Игнор для Git
+libs/           # Подключаемые библиотеки
 ```
 
 ## Запуск
